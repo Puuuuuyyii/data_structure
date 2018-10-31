@@ -11,6 +11,8 @@ public interface Ordered {
     void bubbleSort();
     void doubleBubbleSort();
     void simpleSelectSort();
+    void shellSort();
+    void quickSort(int p, int r);
     void display();
     int size();
     int getMax();

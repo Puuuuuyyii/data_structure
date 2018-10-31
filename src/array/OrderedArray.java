@@ -195,4 +195,86 @@ public class OrderedArray implements Ordered {
             }
         }
     }
+
+    @Override
+    public void shellSort() {
+        int inner, outer;
+        int temp;
+        int h = 1;
+        while (h <= length / 3){
+            h = h * 3 + 1;
+        }
+        while (h > 0){
+            for (outer = h; outer < length; outer ++){
+                temp = array[outer];
+                inner = outer;
+                while (inner > h - 1 && array[inner - h] >= temp){
+                    array[inner] = array[inner - h];
+                    inner -= h;
+                }
+                array[inner] = temp;
+                for (int i = 0; i < length; i ++){
+                    System.out.print(array[i] + " ");
+                }
+                System.out.println();
+            }
+            h = (h - 1) / 3;
+        }
+    }
+
+    @Override
+    public void quickSort(int l, int r) {
+        if (l < r){
+            int i = l, j = r, x = array[l];
+            while (i < j){
+                while (i < j && array[j] >= x){
+                    j --;
+                }
+                if (i < j){
+                    array[i ++] = array[j];
+                }
+                while (i < j && array[i] < x){
+                    i ++;
+                }
+                if (i < j){
+                    array[j --] = array[i];
+                }
+                array[i] = x;
+                quickSort(l, i - 1);
+                quickSort(i + 1, r);
+            }
+        }
+        /*if (l < r){
+            int i = partition(l, r);
+            quickSort(l, i-1);
+            quickSort(i + 1, l);
+        }*/
+    }
+    private void swap(int num1, int num2){
+        int temp = num1;
+        num1 = num2;
+        num2 = temp;
+    }
+    private int partition(int l, int r){
+        int i = l, j = r;
+        int x = array[l];
+        while (i < j){
+            while (i < j && array[j] >= x){
+                j --;
+            }
+            if (i < j){
+                array[i] = array[j];
+                i ++;
+            }
+            while (i < j && array[i] < x){
+                i ++;
+            }
+            if (i < j){
+                array[j] = array[i];
+                j --;
+            }
+        }
+        array[i] = x;
+        return i;
+    }
 }

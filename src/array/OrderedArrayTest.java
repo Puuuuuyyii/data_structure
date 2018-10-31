@@ -3,9 +3,10 @@ package array;
 public class OrderedArrayTest {
     public static void main(String[] args) throws InterruptedException {
         Ordered orderedArray = new OrderedArray();
+        long iniTime = System.nanoTime();
         orderedArray.insert(24);
-        orderedArray.insert(2);
-        orderedArray.insert(4);
+        orderedArray.insert(26);
+        orderedArray.insert(568);
         orderedArray.insert(6);
         orderedArray.insert(9);
         orderedArray.insert(32);
@@ -22,7 +23,9 @@ public class OrderedArrayTest {
         orderedArray.insert(655);
         orderedArray.insert(5852);
         orderedArray.insert(127);
-        orderedArray.doubleBubbleSort();
+        orderedArray.display();
+        orderedArray.quickSort(0, 18);
+        long endTime = System.nanoTime();
         orderedArray.display();
 
 
