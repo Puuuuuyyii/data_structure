@@ -223,9 +223,9 @@ public class OrderedArray implements Ordered {
     }
 
     @Override
-    public void quickSort(int l, int r) {
-        if (l < r){
-            int i = l, j = r, x = array[l];
+    public void quickSort(int base_number, int last_index) {
+        if (base_number < last_index){
+            int i = base_number, j = last_index, x = array[base_number];
             while (i < j){
                 while (i < j && array[j] >= x){
                     j --;
@@ -239,15 +239,27 @@ public class OrderedArray implements Ordered {
                 if (i < j){
                     array[j --] = array[i];
                 }
+
+
+
+
+
+
+
+
+
+
+
+
                 array[i] = x;
-                quickSort(l, i - 1);
-                quickSort(i + 1, r);
+                quickSort(base_number, i - 1);
+                quickSort(i + 1, last_index);
             }
         }
-        /*if (l < r){
-            int i = partition(l, r);
-            quickSort(l, i-1);
-            quickSort(i + 1, l);
+        /*if (base_number < last_index){
+            int i = partition(base_number, last_index);
+            quickSort(base_number, i-1);
+            quickSort(i + 1, base_number);
         }*/
     }
     private void swap(int num1, int num2){
