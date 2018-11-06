@@ -1,4 +1,4 @@
-package MyServer;
+package MyUDPServer;
 
 import java.io.IOException;
 import java.net.*;

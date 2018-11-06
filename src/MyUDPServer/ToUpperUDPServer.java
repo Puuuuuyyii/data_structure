@@ -1,7 +1,8 @@
-package MyServer;
+package MyUDPServer;
 
 import java.io.IOException;
 import java.net.*;
+import java.util.Scanner;
 
 /**
  * @Author: puyifan
@@ -40,16 +41,24 @@ public class ToUpperUDPServer {
                     e.printStackTrace();
                 }
                 String recvStr = new String(recvPacket.getData(), 0, recvPacket.getLength());
+                System.out.println("客户端:" + recvStr);
                 //拿到对端的ip和端口
                 InetAddress clientAddr = recvPacket.getAddress();
                 int clientPort = recvPacket.getPort();
                 //回传数据
-                String upperString = recvStr.toUpperCase();
-                byte[] sendBuf = upperString.getBytes();
-                DatagramPacket sendPacket = new DatagramPacket(sendBuf, sendBuf.length, clientAddr, clientPort);
+                //String upperString = recvStr.toUpperCase();
+                //System.out.println(upperString);
+                //byte[] sendBuf = upperString.getBytes();
+                DatagramPacket sendPacket = null;
+                Scanner scanner  = new Scanner(System.in);
+                String myString = scanner.nextLine();
+                byte[] sendBuf = myString.getBytes();
+                sendPacket = new DatagramPacket(sendBuf, sendBuf.length, clientAddr, clientPort);
+
                 try {
                     serverSocket.send(sendPacket);
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                     e.printStackTrace();
                 }
             }
