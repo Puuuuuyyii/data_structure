@@ -1,4 +1,4 @@
-package MyServer;
+package myServer;
 
 import java.io.IOException;
 import java.net.*;
