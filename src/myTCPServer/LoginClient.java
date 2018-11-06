@@ -1,4 +1,4 @@
-package myTcpServer;
+package myTCPServer;
 
 import java.io.*;
 import java.net.Socket;
@@ -20,6 +20,14 @@ public class LoginClient {
         bw.write("用户名：admin;密码：123");
         bw.flush();
         socket.shutdownOutput();//关闭输出流
+        //获取输入流，得到服务器的响应信息
+        InputStream is = socket.getInputStream();
+        InputStreamReader isr = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(isr);
+        String info = null;
+        while ((info = br.readLine()) != null){
+            System.out.println("我是客户端，服务器说：" + info);
+        }
         //关闭资源
         bw.close();
         pw.close();

@@ -1,10 +1,6 @@
-package myTcpServer;
+package myTCPServer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.InetAddress;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -29,6 +25,16 @@ public class LoginServer {
                 System.out.println("我是服务器，客户端说：" + info);
             }
             socket.shutdownInput();//关闭输入流
+            //获取一个输出流，向客户端输出信息，相应客户端的请求
+            OutputStream os = socket.getOutputStream();//字节输出流
+            PrintWriter pw = new PrintWriter(os);//字符输出流
+            BufferedWriter bw = new BufferedWriter(pw);//缓冲输出流
+            bw.write("欢迎您");
+            bw.newLine();
+            bw.flush();
+            os.close();
+            pw.close();
+            bw.close();
             br.close();
             isr.close();
             is.close();
