@@ -1,7 +1,6 @@
 package mySocket;
 
-import myServer.ToUpperUDPClient;
-
+import myUDPServer.ToUpperUDPClient;
 import java.util.Scanner;
 
 public class TestUDP {

@@ -12,7 +12,7 @@ import java.net.Socket;
 public class LoginClient {
     public static void main(String[] args) throws IOException {
         //创建客户端Socket,指定服务器地址和端口
-        Socket socket = new Socket("192.168.10.188", 8888);
+        Socket socket = new Socket("localhost", 8888);
         //获取输出流，向服务器端发送登录的信息
         OutputStream os = socket.getOutputStream();//字节输出流
         PrintWriter pw = new PrintWriter(os);//字符输出流

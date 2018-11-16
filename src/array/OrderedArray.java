@@ -240,17 +240,6 @@ public class OrderedArray implements Ordered {
                     array[j --] = array[i];
                 }
 
-
-
-
-
-
-
-
-
-
-
-
                 array[i] = x;
                 quickSort(base_number, i - 1);
                 quickSort(i + 1, last_index);
